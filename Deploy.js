@@ -4,17 +4,21 @@ require('dotenv').config();
 
 async function main() {
 	const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
-	// const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
-	const encriptedJson = fs.readFileSync('./.encryptedKey.json', 'utf-8');
-	let wallet = ethers.Wallet.fromEncryptedJsonSync(
-		encriptedJson,
-		process.env.PRIVATE_KEY_PASSWORD
-	);
-	wallet = wallet.connect(provider);
+
+	//? encripted wallet for more safty
+	// const encriptedJson = fs.readFileSync('./.encryptedKey.json', 'utf-8');
+	// let wallet = ethers.Wallet.fromEncryptedJsonSync(
+	// 	encriptedJson,
+	// 	process.env.PRIVATE_KEY_PASSWORD
+	// );
+	// wallet = wallet.connect(provider);
+
+	const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 	const abi = fs.readFileSync('./SimpleStorage_sol_SimpleStorage.abi', 'utf-8');
 	const binary = fs.readFileSync('./SimpleStorage_sol_SimpleStorage.bin', 'utf-8');
 	const contractFactory = new ethers.ContractFactory(abi, binary, wallet);
-	console.log('Deploying, please wait...');
+
+	console.log('Deploying Contract, Please Wait...');
 
 	//? deploy the contract
 	const contract = await contractFactory.deploy();
