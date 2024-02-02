@@ -5,7 +5,7 @@ pragma solidity ^0.8.7;
 // EVM compatible blockchain => avalanche, Fantom, Polygon
 
 contract SimpleStorage {
-    uint256 favouriteNumber = 25;
+    uint256 favouriteNumber = 0;
 
     mapping(string => uint256) public nameToFavouriteNumber;
 
