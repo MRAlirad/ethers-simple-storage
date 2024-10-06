@@ -38,3 +38,20 @@ we can alse add the above command to our package.json script and call it `compil
 ```bash
 npm run compile
 ```
+
+## Ganache & Networks
+
+to deploy our contract we can use a tool called `Ganache`, which is our fake blockchain. (almost like JavaScript VM in Remix). [learn more](https://archive.trufflesuite.com/ganache/).
+
+If we go to the network tab of metamask (chrome-extension://nkbihfbeogaeaoehlefnkodbefgpgknn/home.html#settings/networks), every network has sth called `RPC URL` (Remote Procedure Call Uniform Resource Locator).
+which is a connection to a blockchain node that somebody is running.
+Sepolia RPC URL : "https://sepolia.infura.io/v3/"
+
+This url connect us to make API calls and to intract with a blockchain node.
+Ganache also has a RPC URL which is : `http://0.0.0.0:8584`
+
+If you go to go-ethereum github repo, there are some structures for you to run your own blockchain node. [learn more](https://github.com/ethereum/go-ethereum)
+
+if you go to `JSON RPC Spec Playground` there are some methods you can use to interface Ethereum clients
+
+to intract with our node and do things like deploy and intract with our block chain node we use `Ether.js`
