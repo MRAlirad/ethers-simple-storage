@@ -1,0 +1,16 @@
+{
+  "name": "ethers-simple-storage",
+  "version": "1.0.0",
+  "main": "deploy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile" : "npx solcjs --bin --abi --include-path node_modules/ --base-path . -o . SimpleStorage.sol"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "solc": "^0.8.7-fixed"
+  }
+}

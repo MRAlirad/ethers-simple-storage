@@ -1,0 +1,11 @@
+{
+	"[solidity]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"editor.defaultFormatter": "NomicFoundation.hardhat-solidity",
+	"notebook.defaultFormatter": "NomicFoundation.hardhat-solidity",
+	"files.autoSave": "afterDelay",
+	"editor.formatOnSave": true,
+	"files.autoSaveDelay": 500
+}
