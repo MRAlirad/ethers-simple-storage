@@ -89,9 +89,7 @@ with `JsonRpcProvider` you can connect to the local blockchain url that is passe
 
 ### Wallet
 
-A [`Wallet`](https://docs.ethers.org/v6/api/wallet/#Wallet) manages a single private key which is used to sign transactions, messages and other common payloads.
-
-
+The [`Wallet`](https://docs.ethers.org/v5/api/signer/#Wallet) class inherits Signer and can sign transactions and messages using a private key as a standard Externally Owned Account (EOA).
 
 ```js
 const { Wallet } = require('ethers');
@@ -138,4 +136,46 @@ const contract = await contactFactory.deploy({
     gasPrice: 100000000000,
     gasLimit: 173460347334347,
 });
+```
+
+## Transaction Receipts
+
+the [`deploymentTransaction()`](https://docs.ethers.org/v6/api/contract/#BaseContract-deploymentTransaction) Return the transaction used to deploy this contract.
+
+we can also wait for the certain number of blocks for our contract finish with so we've deployed the but we want to wait one block to make sure it acctually gets attached to the chain.
+
+```js
+const deploymentReceipt = await contract.deploymentTransaction().wait(1);
+```
+
+you can also deploy the contract with only the transaction data using two methods of wallet class:
+
+1. `wallet.signTransaction` => to sign a transaction
+2. `wallet.sendTransaction` => to send the tranaction and also sign it
+
+you can also provide the txData details to pass to these methods
+
+```js
+const txData = {
+    accessList: [],
+    chainId: 123456,
+    confirmations: 0,
+    data: '0x', // binary of the contract we want to deploy. starts with 0x
+    from: '0x46E0726Ef145d92DEA66D38797CF51901701926e',
+    gasLimit: { BigNumber: "21000" },
+    gasPrice: null,
+    hash: '0x1c4913f6e06a8b48443dbe3169acb6701b558ed6d3b478723eb6b137d2418792',
+    maxFeePerGas: { BigNumber: "1500000014" },
+    maxPriorityFeePerGas: { BigNumber: "1500000000" },
+    nonce : await wallet.getNonce(), //! always get the correct nounce
+    r: '0xb58e9234bf734f5bab14634ca21e35c3fa163562930d782424e78120cfcc9b8f',
+    s: '0x690c4b1c3d2b6e519340b2f0f3fc80ccea47e3c2a077f9771aaa2e1d7552aa24',
+    to: '0x8ba1f109551bD432803012645Ac136ddd64DBA72',
+    type: 2,
+    v: 0,
+    value: { BigNumber: "1000000000000000000" },
+    wait: [Function (anonymous)]
+}
+
+const sentTxResponse = await wallet.sendTransaction(txData);
 ```
