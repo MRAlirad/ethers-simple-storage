@@ -225,3 +225,28 @@ to use it:
 ```
 
 `PRIVATE_KEY` is in your .env file
+
+[`THE .ENV PLEDGE`](https://github.com/smartcontractkit/full-blockchain-solidity-course-js/discussions/5)
+
+## Better Private Key Management
+
+this is `encryptKey.js`
+```js
+const wallet = new Wallet(process.env.PRIVATE_KEY);
+const encriptedJsonKey = await wallet.encrypt(process.env.PRIVATE_KEY_PASSWORD);
+fs.writeFileSync('./.encryptedKey.json', encriptedJsonKey);
+```
+
+this is deploy.js
+```js
+const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
+const encriptedJson = fs.readFileSync('./.encryptedKey.json', 'utf-8');
+let wallet = new Wallet.fromEncryptedJsonSync(
+    encriptedJson,
+    process.env.PRIVATE_KEY_PASSWORD
+);
+wallet = wallet.connect(provider);
+```
+
+1. [`wallet.encrypt`](https://docs.ethers.org/v6/api/wallet/#Wallet-encrypt)
+2. [`wallet.fromEncryptedJsonSync`](https://docs.ethers.org/v6/api/wallet/#Wallet_fromEncryptedJsonSync)
