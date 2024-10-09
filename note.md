@@ -179,3 +179,28 @@ const txData = {
 
 const sentTxResponse = await wallet.sendTransaction(txData);
 ```
+
+## Interacting with Contracts in Ethers.js
+
+when you deploy the contract, it returns the object of the contract and you can have access to the methods and proprty of it.
+
+all the methods and properties of the contract are promises and you need to await it.
+
+```js
+const contract = await contactFactory.deploy();
+
+//? get the favouriteNumber;
+const currentFavouriteNumber = await contract.retrieve();
+console.log(`current favourite number: ${currentFavouriteNumber.toString()}`);
+
+//? change the favourite number
+const transacitonResponse = await contract.store('125');
+const transacitonReceipt = await transacitonResponse.wait(1);
+
+const updatedFavouriteNumber = await contract.retrieve();
+console.log(`updated favourite number is: ${updatedFavouriteNumber}`);
+```
+
+you better work with the `string type of the numbers`, so you can handle [`bigNumber`](https://docs.ethers.org/v5/api/utils/bignumber/).
+
+[Online Solidity Decompiler](https://ethervm.io/decompile)
