@@ -42,7 +42,7 @@ const main = async () => {
 
 	// console.log(sentTxResponse);
 
-	console.log(`contract address is ${contract.getAddress()}`);
+	console.log(`contractAddress : ${await contract.getAddress()}`);
 
 	//? get the favouriteNumber;
 	const currentFavouriteNumber = await contract.retrieve();

@@ -259,3 +259,7 @@ to deploy our contract on Testnet or a Mainnet we can use `Alchemy`.
 
 
 You can take the `RPC_URL` from Alchemy and the `PRIVATE_KEY` from metamask
+
+## Verifying on Block Explorers
+
+when you visit the etherscan site and explore your contract addres, in `Contract` tab you can verify and publish your contract
