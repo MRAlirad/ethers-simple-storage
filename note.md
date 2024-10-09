@@ -204,3 +204,24 @@ console.log(`updated favourite number is: ${updatedFavouriteNumber}`);
 you better work with the `string type of the numbers`, so you can handle [`bigNumber`](https://docs.ethers.org/v5/api/utils/bignumber/).
 
 [Online Solidity Decompiler](https://ethervm.io/decompile)
+
+## Environment Variables
+
+It's not ok to expose your crucial information like private key or ... in your code.
+You better put them in your `.env` file and read your data from there.
+
+to work with our `.env` file we need to install a package called [`dotenv`](https://www.npmjs.com/package/dotenv);
+
+```bash
+npm install dotenv
+```
+
+to use it:
+
+```js
+    require('dotenv').config();
+
+    const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+```
+
+`PRIVATE_KEY` is in your .env file

@@ -1,12 +1,13 @@
 const { JsonRpcProvider, Wallet, ContractFactory } = require('ethers');
 const fs = require('fs');
+require('dotenv').config();
 
 const main = async () => {
 	// connect to the local blockchain url
-	const provider = new JsonRpcProvider('http://127.0.0.1:7545');
+	const provider = new JsonRpcProvider(process.env.RPC_URL);
 
 	// sign a transaction with your private key
-	const wallet = new Wallet('0x77cd201d88a6f695434115341ed89761f3fb130dbef7120c5d35f458bbe8d9b3', provider);
+	const wallet = new Wallet(process.env.PRIVATE_KEY, provider);
 
 	// get abi and binary of the compiled contract
 	const abi = fs.readFileSync('./SimpleStorage_sol_SimpleStorage.abi', 'utf-8');
