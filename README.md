@@ -250,3 +250,12 @@ wallet = wallet.connect(provider);
 
 1. [`wallet.encrypt`](https://docs.ethers.org/v6/api/wallet/#Wallet-encrypt)
 2. [`wallet.fromEncryptedJsonSync`](https://docs.ethers.org/v6/api/wallet/#Wallet_fromEncryptedJsonSync)
+
+## Deploying to a Testnet or a Mainnet
+
+to deploy our contract on Testnet or a Mainnet we can use `Alchemy`.
+
+[`Alchemy`](https://www.alchemy.com/) is a web3 develpment platform. a node as a service and allows us to connect to any blockchain that they have supporte for.
+
+
+You can take the `RPC_URL` from Alchemy and the `PRIVATE_KEY` from metamask

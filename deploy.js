@@ -20,7 +20,7 @@ const main = async () => {
 	// deploy the contract using deploy mehod of contactFactory
 	const contract = await contactFactory.deploy();
 
-	const transactionReceipt = await contract.deploymentTransaction().wait(1);
+	await contract.deploymentTransaction().wait(1);
 
 	// console.log(`let's deploy with only transaction data!`);
 
@@ -41,6 +41,8 @@ const main = async () => {
 	// const sentTxResponse = await wallet.sendTransaction(tx); //? send transaction also sign it so you don't need to sign it yourself
 
 	// console.log(sentTxResponse);
+
+	console.log(`contract address is ${contract.getAddress()}`);
 
 	//? get the favouriteNumber;
 	const currentFavouriteNumber = await contract.retrieve();
